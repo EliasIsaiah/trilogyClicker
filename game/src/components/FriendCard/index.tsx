@@ -1,7 +1,17 @@
 import React from "react";
 import "./style.css";
 
-function FriendCard(props) {
+interface Props {
+
+  id: number;
+  name: string;
+  image: string;
+  occupation: string;
+  location: string;
+  removeFriend: (id:number) => void;
+}
+
+function FriendCard(props:Props) {
   return (
     <div className="card">
       <div className="img-container">
