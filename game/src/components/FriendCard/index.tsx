@@ -6,8 +6,6 @@ interface Props {
   id: number;
   name: string;
   image: string;
-  occupation: string;
-  location: string;
   shuffleFriends: (id:number) => void;
 }
 
