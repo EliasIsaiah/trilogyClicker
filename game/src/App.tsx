@@ -4,6 +4,7 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./components/friends.json";
 import {Friend} from './interfaces/Friend';
+import {shuffle} from './shuffleArray';
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
@@ -11,9 +12,10 @@ class App extends Component {
     friends
   };
 
-  removeFriend = (id:number) => {
+  shuffleFriends = (id:number) => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends:Friend[] = this.state.friends.filter((friend:Friend) => friend.id !== id);
+    const friends:Friend[] = shuffle(this.state.friends);
+    // const friends:Friend[] = this.state.friends.filter((friend:Friend) => friend.id !== id);
     // Set this.state.friends equal to the new friends array
     this.setState({ friends });
   };
@@ -25,7 +27,7 @@ class App extends Component {
         <Title>Friends List</Title>
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+            shuffleFriends={this.shuffleFriends}
             id={friend.id}
             key={friend.id}
             name={friend.name}

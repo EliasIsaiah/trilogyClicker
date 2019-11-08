@@ -8,16 +8,16 @@ interface Props {
   image: string;
   occupation: string;
   location: string;
-  removeFriend: (id:number) => void;
+  shuffleFriends: (id:number) => void;
 }
 
 function FriendCard(props:Props) {
   return (
-    <div className="card">
+    <div onClick ={() => props.shuffleFriends(props.id)} className="card">
       <div className="img-container">
         <img alt={props.name} src={props.image} />
       </div>
-      <div className="content">
+      {/* <div className="content">
         <ul>
           <li>
             <strong>Name:</strong> {props.name}
@@ -29,10 +29,10 @@ function FriendCard(props:Props) {
             <strong>Location:</strong> {props.location}
           </li>
         </ul>
-      </div>
-      <span onClick={() => props.removeFriend(props.id)} className="remove">
+      </div> */}
+      {/* <span onClick={() => props.shuffleFriends(props.id)} className="remove">
         𝘅
-      </span>
+      </span> */}
     </div>
   );
 }
