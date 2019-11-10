@@ -9,29 +9,20 @@ interface Props {
   shuffleFriends: (id:number) => void;
 }
 
+
 function FriendCard(props:Props) {
+  
+  const pictureStyle = {
+    background: `center / contain no-repeat url(${props.image})`
+  }
+
   return (
-    <div onClick ={() => props.shuffleFriends(props.id)} className="card">
-      <div className="img-container">
-        <img alt={props.name} src={props.image} />
-      </div>
-      {/* <div className="content">
-        <ul>
-          <li>
-            <strong>Name:</strong> {props.name}
-          </li>
-          <li>
-            <strong>Occupation:</strong> {props.occupation}
-          </li>
-          <li>
-            <strong>Location:</strong> {props.location}
-          </li>
-        </ul>
-      </div> */}
-      {/* <span onClick={() => props.shuffleFriends(props.id)} className="remove">
-        𝘅
-      </span> */}
-    </div>
+    <div style={pictureStyle} onClick ={() => props.shuffleFriends(props.id)} className="col-4 card"></div>
+    // <div style={pictureStyle} onClick ={() => props.shuffleFriends(props.id)} className="card">
+    //   <div className="img-container">
+    //     <img alt={props.name} src={props.image} />
+    //   </div>
+    // </div>
   );
 }
 
