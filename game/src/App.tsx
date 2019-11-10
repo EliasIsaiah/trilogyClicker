@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import FriendCard from "./components/FriendCard";
+import PictureCard from "./components/PictureCard";
 import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar";
-import friends from "./components/friends.json";
-import { Friend } from './interfaces/Friend';
+import pictures from "./components/pictures.json";
+import { PictureInterface } from './interfaces/PictureCard';
 import { shuffle } from './shuffleArray';
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.pictures to the pictures json array
   state = {
-    friends,
+    pictures,
     previousIDs: [0],
     score: 0,
     topScore: 0,
@@ -19,7 +19,7 @@ class App extends Component {
   restart = () => {
     alert("game over");
     this.setState({
-      friends,
+      pictures,
       previousIDs: [0],
       score: 0,
       topScore: this.state.topScore,
@@ -45,14 +45,14 @@ class App extends Component {
     }
   }
 
-  shuffleFriends = (id: number) => {
-    const friends: Friend[] = shuffle(this.state.friends);
+  shufflePictures = (id: number) => {
+    const pictures: PictureInterface[] = shuffle(this.state.pictures);
 
     if(!this.state.previousIDs.includes(id)) {
 
       const newScores = this.incrementScore();
       
-      this.setState({ friends, previousIDs: [...this.state.previousIDs, id], score:newScores.newScore, topScore:newScores.newTopScore });
+      this.setState({ pictures, previousIDs: [...this.state.previousIDs, id], score:newScores.newScore, topScore:newScores.newTopScore });
     } 
     else {
       return this.restart()
@@ -60,16 +60,16 @@ class App extends Component {
   };
 
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+  // Map over this.state.pictures and render a pictureCard component for each friend object
   render() {
     return (
       <>
       <Navbar score={this.state.score} topScore={this.state.topScore} />
       <Wrapper>
         <p className="col-12 mx-auto">Click all nine pictures without repeating yourself</p>
-        {this.state.friends.map(friend => (
-          <FriendCard
-            shuffleFriends={this.shuffleFriends}
+        {this.state.pictures.map(friend => (
+          <PictureCard
+            shufflePictures={this.shufflePictures}
             id={friend.id}
             name={friend.name}
             image={friend.image}

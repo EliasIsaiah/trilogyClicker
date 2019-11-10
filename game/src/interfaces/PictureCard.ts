@@ -1,4 +1,4 @@
-export interface Friend {
+export interface PictureInterface {
     id: number;
     name: string;
     image: string;
