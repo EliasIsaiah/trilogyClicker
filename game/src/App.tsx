@@ -67,12 +67,12 @@ class App extends Component {
       <Navbar score={this.state.score} topScore={this.state.topScore} />
       <Wrapper>
         <p className="col-12 mx-auto">Click all nine pictures without repeating yourself</p>
-        {this.state.pictures.map(friend => (
+        {this.state.pictures.map(picture => (
           <PictureCard
             shufflePictures={this.shufflePictures}
-            id={friend.id}
-            name={friend.name}
-            image={friend.image}
+            id={picture.id}
+            name={picture.name}
+            image={picture.image}
           />
         ))}
       </Wrapper>
