@@ -60,7 +60,6 @@ class App extends Component {
   };
 
 
-  // Map over this.state.pictures and render a pictureCard component for each friend object
   render() {
     return (
       <>
